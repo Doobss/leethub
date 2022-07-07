@@ -9,13 +9,11 @@ function setMatrix(matrix, setValueTo = 0) {
     const columns = matrix[0].length
     let i = 0;
     let j = 0;
-    // console.log("\n\nSTART")
     while(rows > i) {
         j = 0;
       while(columns > j) {
 
           const valueAtPoint = matrix[i][j]
-          // console.log({ valueAtPoint })
           if(valueAtPoint === setValueTo) {
               const addedPointsToMutate = []
               let z = columns;
@@ -30,7 +28,6 @@ function setMatrix(matrix, setValueTo = 0) {
                       addedPointsToMutate.push([z, j])
                   }
               }
-              // console.log({ addedPointsToMutate })
               pointsToMutate.push(...addedPointsToMutate)
           }
           j++
@@ -38,13 +35,11 @@ function setMatrix(matrix, setValueTo = 0) {
       i++
     }
 
-    // console.log({ pointsToMutate })
     let k = pointsToMutate.length;
     while(k--) {
-      const [ row, column ] = pointsToMutate[k]
-      matrix[row][column] = setValueTo
+      const point = pointsToMutate[k]
+      matrix[point[0]][point[1]] = setValueTo
     }
-    // console.log({ matrix })
     return matrix
 }
 
