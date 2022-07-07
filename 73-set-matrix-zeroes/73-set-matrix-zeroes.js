@@ -10,25 +10,23 @@ function setMatrix(matrix, setValueTo = 0) {
     let i = 0;
     let j = 0;
     while(rows > i) {
-        j = 0;
+      j = 0;
       while(columns > j) {
 
           const valueAtPoint = matrix[i][j]
           if(valueAtPoint === setValueTo) {
-              const addedPointsToMutate = []
               let z = columns;
               while(z--){
                   if(z !== j) {
-                      addedPointsToMutate.push([i, z])
+                      pointsToMutate.push([i, z])
                   }
               }
               z = rows
               while(z--){
                   if(z !== i) {
-                      addedPointsToMutate.push([z, j])
+                      pointsToMutate.push([z, j])
                   }
               }
-              pointsToMutate.push(...addedPointsToMutate)
           }
           j++
       }
