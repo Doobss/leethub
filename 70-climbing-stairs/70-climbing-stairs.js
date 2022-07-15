@@ -5,33 +5,34 @@
 
 
 
-function distWays(indx,n,dp){
-    if(indx>n) return 0;
-    if(indx===n-1 || indx===n) return 1;
+// function distWays(indx,n,dp){
+//     if(indx>n) return 0;
+//     if(indx===n-1 || indx===n) return 1;
     
-    if(dp[indx]!==-1) return dp[indx];
-    let onestep=distWays(indx+1,n,dp);
-    let twoStep=distWays(indx+2,n,dp);
+//     if(dp[indx]!==-1) return dp[indx];
+//     let onestep=distWays(indx+1,n,dp);
+//     let twoStep=distWays(indx+2,n,dp);
     
-    return dp[indx]=onestep+twoStep;
-}
-var climbStairs = function(n) {
-    
-    let dp=Array(n+1).fill(-1);
-    return distWays(0,n,dp);
-};
-
+//     return dp[indx]=onestep+twoStep;
+// }
 // var climbStairs = function(n) {
     
-// //     let prev = 0;
-// //     let sum = 1;
-// //     while(n--) {
-// //         let valueHolder = sum;
-// //         sum+= prev
-// //         prev = valueHolder
-// //     }
+//     let dp=Array(n+1).fill(-1);
+//     return distWays(0,n,dp);
+// };
+
+var climbStairs = function(n) {
     
-// //     return sum
+    let prev = 0;
+    let sum = 1;
+    while(n--) {
+        let valueHolder = sum;
+        sum+= prev
+        prev = valueHolder
+    }
+    
+    return sum
+}
     
 //     let store = Array(n + 1).fill(-1)
 //     const countSteps = (ind = 0) => {
