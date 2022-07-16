@@ -21,7 +21,8 @@ var cloneGraph = function(graphHead) {
         const nodeIndx = node.val - 1
         const clonedLen = clonedNodes.length
         if(node.val > clonedLen) {
-            clonedNodes = [...clonedNodes, ...Array(nodeIndx - clonedLen) ]  
+            clonedNodes.push(undefined)
+            // clonedNodes = [...clonedNodes, ...Array(nodeIndx - clonedLen) ]  
         }
         let clonedNode = clonedNodes[nodeIndx]
         if(!clonedNode) {
