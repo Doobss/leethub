@@ -30,7 +30,7 @@ var cloneGraph = function(graphHead) {
             clonedNode.neighbors = node.neighbors.map(neighbor => cloneNode(neighbor))
         }
         return clonedNode
- 
+
     }
     return cloneNode()
 };
