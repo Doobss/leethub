@@ -5,7 +5,7 @@ int* store[MAX_VALUE];
 // after preprocess this is sorted matrix (m x 2, where m = unique indicies) 
 //   store[m][1] = index value
 //   store[m][0] = number of times this index occured 
-int* calculated;
+int calculated[MAX_VALUE];
 int store_length = MAX_VALUE;
 int initalized = 0; 
 
@@ -21,10 +21,10 @@ void clear_store() {
     }
   } else {
     initalized++;
-    calculated = (int*) calloc((unsigned long) store_length, sizeof(int));
     while(i--) {
       store[i] = (int*) calloc(2, sizeof(int));
       store[i][1] = i;
+      calculated[i] = 0;
     }
   }
 }
