@@ -34,4 +34,4 @@ int rob(int* nums, int numsSize) {
     number_of_houses = numsSize;
     house_values = nums;
     return find_houses(0);
-}
+};
