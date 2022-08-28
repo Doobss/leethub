@@ -27,7 +27,7 @@ void clear_store() {
       calculated[i] = 0;
     }
   }
-}
+};
 
 
 
