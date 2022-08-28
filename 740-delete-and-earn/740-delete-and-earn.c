@@ -5,9 +5,10 @@ int* store[MAX_VALUE];
 // after preprocess this is sorted matrix (m x 2, where m = unique indicies) 
 //   store[m][1] = index value
 //   store[m][0] = number of times this index occured 
+int* calculated;
 int store_length = MAX_VALUE;
-int* calculated;  // used to store previously calculated max values
 int initalized = 0; 
+
 
 
 void clear_store() {
@@ -16,9 +17,11 @@ void clear_store() {
     while(i--) {
       store[i][0] = 0; // number of occurances
       store[i][1] = i; // index to keep track after filtering down
+      calculated[i] = 0;
     }
   } else {
     initalized++;
+    calculated = (int*) calloc((unsigned long) store_length, sizeof(int));
     while(i--) {
       store[i] = (int*) calloc(2, sizeof(int));
       store[i][1] = i;
@@ -39,23 +42,23 @@ int filter_store(int removed_int) { // filters out all store[m][0] = removed_int
         }
     }
     return new_length;
-};
-
+}
 
 
 
 
 void preprocess(int* starting_array, int array_length) {
   store_length = MAX_VALUE;
+
   clear_store();
   int i = array_length;
   while (i--) {
         store[starting_array[i]][0] += store[starting_array[i]][1];
   }
   store_length = filter_store(0);
-  calculated = (int*) calloc((unsigned long) store_length, sizeof(int));
+
   return;
-};
+}
 
 
 int compute(int indx) {
@@ -68,7 +71,7 @@ int compute(int indx) {
     calculated[indx] = store[indx][0] + MAX(compute(indx + 2), compute(indx + 3));
   }
   return calculated[indx];
-};
+}
 
 
 int deleteAndEarn(int* nums, int numsSize) {
@@ -76,4 +79,4 @@ int deleteAndEarn(int* nums, int numsSize) {
   if (2 > store_length) return store[0][0] ;
   // free(calculated);
   return MAX(compute(0), compute(1));;
-};
+}
