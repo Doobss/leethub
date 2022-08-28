@@ -2,7 +2,7 @@ int robbed[101];
 void fill() {
   int i = 101;
   while (i--) robbed[i] = -1;
-}
+};
 
 int* house_values;
 int number_of_houses;
