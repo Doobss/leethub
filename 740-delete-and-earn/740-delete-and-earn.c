@@ -39,7 +39,7 @@ int filter_store(int removed_int) { // filters out all store[m][0] = removed_int
         }
     }
     return new_length;
-}
+};
 
 
 
