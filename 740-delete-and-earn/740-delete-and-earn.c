@@ -68,7 +68,7 @@ int compute(int indx) {
     calculated[indx] = store[indx][0] + MAX(compute(indx + 2), compute(indx + 3));
   }
   return calculated[indx];
-}
+};
 
 
 int deleteAndEarn(int* nums, int numsSize) {
