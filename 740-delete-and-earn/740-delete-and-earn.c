@@ -76,4 +76,4 @@ int deleteAndEarn(int* nums, int numsSize) {
   if (2 > store_length) return store[0][0] ;
   // free(calculated);
   return MAX(compute(0), compute(1));;
-}
+};
