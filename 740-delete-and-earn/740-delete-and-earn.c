@@ -44,12 +44,13 @@ int filter_store(int removed_int) { // filters out all store[m][0] = removed_int
 
 
 
+
 void preprocess(int* starting_array, int array_length) {
   store_length = MAX_VALUE;
   clear_store();
   int i = array_length;
   while (i--) {
-        store[starting_array[i]][0] += 1;
+        store[starting_array[i]][0] += store[starting_array[i]][1];
   }
   store_length = filter_store(0);
   calculated = (int*) calloc((unsigned long) store_length, sizeof(int));
@@ -58,25 +59,21 @@ void preprocess(int* starting_array, int array_length) {
 
 
 int compute(int indx) {
-    
+  if (indx >= store_length) return 0;
   if(calculated[indx] != 0) return calculated[indx]; // return previous calculation
 
-  int current_max = 0;
-  int k = indx;
-  while(store_length > ++k) {
-    if (store[indx][1] + 1 != store[k][1]) {
-      current_max = MAX(current_max, compute(k));
-    }
+  if (store[indx][1] + 1 != store[indx + 1][1]) {
+    calculated[indx] = store[indx][0] + MAX(compute(indx + 1), compute(indx + 2));
+  } else {
+    calculated[indx] = store[indx][0] + MAX(compute(indx + 2), compute(indx + 3));
   }
-  calculated[indx] = (store[indx][0] * store[indx][1]) + current_max;
   return calculated[indx];
 }
 
 
 int deleteAndEarn(int* nums, int numsSize) {
   preprocess(nums, numsSize);
-  if (2 > store_length) return ( store[0][0] * store[0][1] );
+  if (2 > store_length) return store[0][0] ;
   // free(calculated);
   return MAX(compute(0), compute(1));;
 }
-
