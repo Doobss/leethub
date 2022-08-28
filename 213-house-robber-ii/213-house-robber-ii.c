@@ -19,13 +19,12 @@ int find_houses(int house_indx) {
     int house_max = max(*(house_values + house_indx), find_houses(house_indx + 1));
     int j = house_indx + 2;
     while ( number_of_houses > j ) {
-      house_max = max(house_max,  (*(house_values + house_indx)+ find_houses(j)));
+      house_max = max(house_max,  (*(house_values + house_indx) + find_houses(j)));
       j++;
     }
     robbed[house_indx] = house_max;
     return house_max;
 }
-
 
 
 int rob(int* nums, int numsSize) {
