@@ -27,6 +27,7 @@ int find_houses(int house_indx) {
 }
 
 
+
 int rob(int* nums, int numsSize) {
     if (2 > numsSize) return *(nums);
     number_of_houses = numsSize;
