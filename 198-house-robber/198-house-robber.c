@@ -15,7 +15,7 @@ int max(int a, int b) {
 
 int find_houses(int house_indx) {
     if (house_indx > number_of_houses - 1) return 0;
-    if (robbed[house_indx] != -1) return robbed[house_indx];
+    if (robbed[house_indx] != - 1) return robbed[house_indx];
 
     int house_max = max(*(house_values + house_indx), find_houses(house_indx + 1));
     int j = house_indx + 2;
@@ -25,7 +25,7 @@ int find_houses(int house_indx) {
     }
     robbed[house_indx] = house_max;
     return house_max;
-}
+};
 
 
 int rob(int* nums, int numsSize) {
