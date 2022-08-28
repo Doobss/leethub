@@ -55,7 +55,7 @@ void preprocess(int* starting_array, int array_length) {
   store_length = filter_store(0);
   calculated = (int*) calloc((unsigned long) store_length, sizeof(int));
   return;
-}
+};
 
 
 int compute(int indx) {
