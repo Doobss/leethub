@@ -34,3 +34,11 @@ bool canJump(int* nums, int numsSize) {
     reset_store();
     return find_path(0);
 }
+
+
+    // if (!found_path && jump_distances[indx]) {
+    //   found_path = find_path(indx + 1);   
+    // }
+    // if (!found_path && (jump_distances[indx] - 1) > 0) {
+    //   found_path = find_path(indx + 2);   
+    // }
