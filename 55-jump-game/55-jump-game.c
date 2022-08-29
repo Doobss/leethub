@@ -25,6 +25,7 @@ int find_path(int indx) {
     store[indx] = found_path;
     return found_path;
 }
+
 bool canJump(int* nums, int numsSize) {
     if (2 > numsSize) return numsSize;
     total_distance = numsSize;
