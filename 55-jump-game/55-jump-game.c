@@ -1,5 +1,5 @@
 #define MAX_LENGTH 10001
-int* store[MAX_LENGTH];
+int store[MAX_LENGTH];
 int total_distance;
 int last_indx;
 int* jump_distances;
@@ -15,14 +15,12 @@ int can_jump_to(int from_indx, int to_indx) {
 
 int find_path(int indx) {
     if (indx > last_indx || 0 > indx) return 0;
-    if (store[indx] != -1) return store[indx];
-    int max_jump = jump_distances[indx];
-    int found_path = can_jump_to(indx, last_indx);
-    store[indx] = found_path;
-    for(int i = 1; max_jump >= i && !found_path; i++) {
-        found_path = find_path(indx + i);
+    if (store[indx] !=  - 1) return store[indx];
+    store[indx] = can_jump_to(indx, last_indx);
+    for(int i = 1; jump_distances[indx] >= i && !store[indx]; i++) {
+        store[indx] = find_path(indx + i);
     }
-    return found_path;
+    return store[indx];
 }
 
 bool canJump(int* nums, int numsSize) {
