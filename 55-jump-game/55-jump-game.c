@@ -16,11 +16,11 @@ int can_jump_to(int from_indx, int to_indx) {
 int find_path(int indx) {
     if (indx > last_indx || 0 > indx) return 0;
     if (store[indx] !=  - 1) return store[indx];
-    int max_jump = jump_distances[indx];
+    int jump = jump_distances[indx];
     int found_path = can_jump_to(indx, last_indx);
-    store[indx] = found_path;
-    for(int i = 1; max_jump >= i && !found_path; i++) {
-        found_path = find_path(indx + i);
+    while (jump && !found_path) {
+        found_path = find_path(indx + jump);
+        jump--;
     }
     store[indx] = found_path;
     return found_path;
