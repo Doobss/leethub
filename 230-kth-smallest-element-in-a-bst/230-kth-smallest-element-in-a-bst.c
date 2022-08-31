@@ -14,7 +14,6 @@ int find(Node node) {
         result = find(node->left);
         if (result != -1) return result;
     }
-    
     count--;
     if (count == 0) return node->val;
     if (node->right) {
